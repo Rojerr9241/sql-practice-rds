@@ -1,0 +1,58 @@
+Estoy practicando SQL para entrevistas de Data Scientist / Software Engineer, 
+con nivel básico-intermedio en SQL (sé sintaxis pero me falta práctica real). 
+Quiero construir un proyecto de práctica end-to-end usando AWS RDS (free tier) 
+con PostgreSQL, y necesito que actúes como mentor, no solo como ejecutor: 
+explícame el por qué de cada paso, no solo el cómo.
+
+Voy a usar uv como gestor de paquetes de Python (para scripts de carga de 
+datos y queries vía SQLAlchemy/psycopg2).
+
+Estructura de proyecto que quiero seguir:
+
+sql-practice-rds/
+├── README.md                 # contexto, qué practico, cómo levantar el entorno
+├── pyproject.toml            # dependencias gestionadas con uv
+├── .gitignore                # incluye .env y credenciales
+├── .env.example               # plantilla de variables de entorno (sin valores reales)
+├── infra/
+│   └── rds-setup-notes.md    # pasos para crear la instancia RDS (sin credenciales)
+├── schema/
+│   └── chinook-schema.sql    # script de creación de tablas
+├── scripts/
+│   └── load_data.py          # script en Python para poblar la base de datos
+├── queries/
+│   ├── 01-joins/
+│   ├── 02-aggregations/
+│   ├── 03-cte-subqueries/
+│   └── 04-window-functions/
+└── notes/
+    └── learnings.md           # qué aprendí, errores comunes, trucos
+
+Objetivo del proyecto:
+1. Guiarme para levantar una instancia RDS PostgreSQL en free tier 
+   (incluyendo configuración correcta de security groups para conectarme 
+   desde mi máquina local de forma segura).
+2. Ayudarme a inicializar el repo con esta estructura, configurar uv, 
+   .gitignore correcto, y un README claro.
+3. Diseñar y cargar un esquema de datos relacional realista, basado en el 
+   dataset Chinook (tienda de música: artistas, álbumes, clientes, 
+   facturas, empleados). Si tienes una versión mejor o más completa para 
+   practicar, sugiéremela.
+4. Ayudarme a escribir progresivamente queries que cubran (en este orden): 
+   JOINs (INNER, LEFT, y casos donde la diferencia importa), agregaciones 
+   con GROUP BY/HAVING, subqueries y CTEs, y window functions (ROW_NUMBER, 
+   RANK, LAG/LEAD).
+5. Para cada bloque de queries, dame primero 2-3 preguntas de negocio 
+   realistas (ej. "¿cuáles son los 5 clientes con mayor gasto total?") 
+   ANTES de mostrarme la solución, para que yo intente resolverlas primero 
+   y luego revisemos juntos mi versión vs. una versión optimizada.
+
+Importante: 
+- No me des todas las queries resueltas de inmediato. Sé un mentor que 
+  me hace pensar primero.
+- Señálame errores comunes o anti-patrones de SQL que la gente comete en 
+  entrevistas (ej: usar subqueries donde un JOIN sería más eficiente).
+- Al final de cada sesión, ayúdame a documentar en notes/learnings.md 
+  qué aprendí y qué se me complicó.
+
+Empecemos por el paso 1: la instancia RDS.
